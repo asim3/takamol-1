@@ -1,0 +1,14 @@
+{% extends "articles/base.html" %}
+{% load static %}
+
+{% block content %}
+{% for field in object_list %}
+  <a href="{{ field.url }}">{{ field.title }}</a>
+  <br>
+  <br>
+{% empty %}
+    empty
+{% endfor %}
+
+
+{% endblock %}
