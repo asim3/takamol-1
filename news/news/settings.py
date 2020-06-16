@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pv6kcbaeg99v@wtx_(#-lgs%#=hm*84prh=$8kt#$_zxmodfxt'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -112,6 +112,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "heroku_static")
 
+NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
 
 try:
     from .local_settings import *
