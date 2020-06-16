@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'pv6kcbaeg99v@wtx_(#-lgs%#=hm*84prh=$8kt#$_zxmodfxt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -110,6 +110,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "heroku_static")
+
+
+try:
+    from .local_settings import *
+except:
+    print("\nlocal_settings not found!\n")
 
 
 django_heroku.settings(locals())
