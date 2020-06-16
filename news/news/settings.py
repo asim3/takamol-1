@@ -112,6 +112,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "heroku_static")
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_root'), )
+
 NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
 
 try:

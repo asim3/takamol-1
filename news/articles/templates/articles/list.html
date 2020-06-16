@@ -3,9 +3,37 @@
 
 {% block content %}
 {% for field in object_list %}
-  <a href="{{ field.url }}">{{ field.title }}</a>
-  <br>
-  <br>
+  <div class="media media-bg p-2 rounded" data-toggle="modal" data-target="#id{{ forloop.counter }}">
+    <div class="media-body">
+      <h4>{{ field.title }} {{ forloop.counter }}</h4>
+    <span class="text-muted">Posted by</span> {{ field.author }} 
+    <span class="text-muted">on {{ field.publishedAt|slice:":10" }}</span>
+    </div>
+    <img src="{{ field.urlToImage }}" class="ml-4 align-self-center rounded" style="width:20vw">
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="id{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ field.title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <img src="{{ field.urlToImage }}" style="width:100%">
+            {{ field.description }}
+          </p>
+          <a href="{{ field.url }}" target="_blank">read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
 {% empty %}
     empty
 {% endfor %}
