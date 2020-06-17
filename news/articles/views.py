@@ -8,11 +8,12 @@ class ListArticles(ListView):
     paginate_by = 20
 
     def get_queryset(self):
-        url = 'http://newsapi.org/v2/everything?q=bitcoin&from=2020-05-16'
+        url = 'https://newsapi.org/v2/everything?q=programing'
         headers = {'X-Api-Key': settings.NEWS_API_KEY}
         news_request = requests.get(url, headers=headers)
         if news_request.status_code == 200:
             response = news_request.json()
             if response.get('status') == "ok":
                 return response.get('articles')
+        print("\n\n\n----------", news_request.status_code)
         return []

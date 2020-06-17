@@ -23,3 +23,8 @@ You're encouraged to setup a `virtualenv` to work in prior to configuring the de
 
         cd news/
         python3 manage.py runserver
+
+---
+
+If you would like to test the application you can run:
+python3 manage.py test
