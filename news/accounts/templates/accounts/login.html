@@ -1,0 +1,27 @@
+{% extends "articles/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+      <div class="card mx-auto" style="width: 90vw; max-width: 450px;">
+        <h3 class="card-header text-light bg-primary">welcom {{ user.username }} </h3>
+        <div class="card-body">
+          <a class="btn btn-block btn-primary float-left" href="{% url 'logout' %}">تسجيل الخروج</a>
+
+        </div>
+      </div>
+    {% else %}
+      <div class="card mx-auto" style="width: 90vw; max-width: 450px;">
+        <h3 class="card-header text-light bg-primary">Login to your account</h3>
+        <div class="card-body">
+          <form class="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-block btn-primary my-3" value="Login">
+          </form>
+        </div>
+
+      </div>
+    {% endif %}
+
+{% endblock %}
