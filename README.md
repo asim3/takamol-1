@@ -27,4 +27,5 @@ You're encouraged to setup a `virtualenv` to work in prior to configuring the de
 ---
 
 If you would like to test the application you can run:
-python3 manage.py test
+
+        python3 manage.py test

@@ -1,9 +1,10 @@
 import requests
-from django.views.generic import ListView
 from django.conf import settings
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ListArticles(ListView):
+class ListArticles(LoginRequiredMixin, ListView):
     template_name = 'articles/list.html'
     paginate_by = 20
 
@@ -15,5 +16,4 @@ class ListArticles(ListView):
             response = news_request.json()
             if response.get('status') == "ok":
                 return response.get('articles')
-        print("\n\n\n----------", news_request.status_code)
         return []
