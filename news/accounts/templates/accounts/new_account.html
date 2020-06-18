@@ -2,27 +2,14 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-      <div class="card mx-auto" style="width: 90vw; max-width: 450px;">
-
-        {% if validlink is None or validlink %}
-            <h4 class="card-header text-light bg-primary">{{ title }}</h4>
-        {% else %}
-            <h4 class="card-header text-light bg-danger">{{ title }}</h4>
-        {% endif %}
-
-
-        {% if form %}
-        <div class="card-body">
-          <form class="" method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-
-            {% if submit_btn %}
-              <input type="submit" class="btn btn-block btn-primary my-3" value="{{ submit_btn }}">
-            {% endif %}
-          </form>
-        </div>
-        {% endif %}
-
-      </div>
+  <div class="login-card">
+    <h3 class="card-header text-light bg-secondary">Add new account</h3>
+    <div class="card-body">
+      <form class="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-block btn-secondary my-3" value="Save">
+      </form>
+    </div>
+  </div>
 {% endblock %}

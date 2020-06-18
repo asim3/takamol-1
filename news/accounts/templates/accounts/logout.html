@@ -1,7 +1,7 @@
 {% extends "articles/base.html" %}
 
 {% block content %}
-  <div class="card mx-auto" style="width: 90vw; max-width: 450px;">
+  <div class="login-card">
     <div class="card-body  text-center">
       <h5 class="card-title mb-4">You have been logged out</h5>
     </div>
@@ -10,6 +10,4 @@
   <div class="list-group text-center my-4 mx-auto" style="width: 90vw; max-width: 450px;">
     <a href="{% url 'login' %}" class="list-group-item list-group-item-action">Login</a>
   </div>
-
-
 {% endblock %}

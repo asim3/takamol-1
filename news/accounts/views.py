@@ -11,9 +11,7 @@ class NewUser(CreateView):
     template_name = 'accounts/new_account.html'
     model = User
     form_class = UserCreationForm
-
-    def get_success_url(self):
-        return reverse('user_details', kwargs={'pk': self.object.id})
+    success_url = 'list-articles'
 
 
 class Login(views.LoginView):
