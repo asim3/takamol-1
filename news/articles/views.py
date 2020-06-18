@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ListArticles(LoginRequiredMixin, ListView):
     template_name = 'articles/list.html'
     paginate_by = 20
+    extra_context = {'page_title': 'News'}
 
     def get_queryset(self):
         url = 'https://newsapi.org/v2/everything?q=programing'

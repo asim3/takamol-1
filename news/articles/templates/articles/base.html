@@ -36,7 +36,10 @@
               </li>
               {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="list-favorite">Favorite</a>
+                <a class="nav-link" href="{% url 'favorite-list' %}">Favorite</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
               </li>
               {% else %}
               <li class="nav-item">
@@ -51,9 +54,15 @@
       <div class="main">
         {% if request.user.is_authenticated %} 
           <div class="alert" style="background: #e9ecef;">
-            welcome <strong>{{ request.user }}</strong>
+            welcome 
+            <a href="{% url 'favorite-list' %}" class="text-dark"><b>{{ request.user }}</b></a> . 
+            <a href="{% url 'logout' %}">logout</a>
           </div>
         {% endif %}
+
+        <h2>{{ page_title }}</h2>
+        <hr>
+        
         <div>
           {% block content %} {% endblock %}
         </div>

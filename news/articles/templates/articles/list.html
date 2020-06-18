@@ -3,14 +3,32 @@
 
 {% block content %}
 {% for field in object_list %}
-  <div class="media media-bg p-2 rounded" data-toggle="modal" data-target="#id{{ forloop.counter }}">
+  <div id="article_{{ forloop.counter }}" class="media media-bg p-2 rounded" data-toggle="modal" 
+    data-target="#id{{ forloop.counter }}">
     <div class="media-body">
-      <h4>{{ field.title }} {{ forloop.counter }}</h4>
-    <span class="text-muted">Posted by</span> {{ field.author }} 
-    <span class="text-muted">on {{ field.publishedAt|slice:":10" }}</span>
+      <h4>{{ field.title }}</h4>
+      <span class="text-muted">Posted by</span> {{ field.author }} 
+      <span class="text-muted">on {{ field.publishedAt|slice:":10" }}</span>
     </div>
     <img src="{{ field.urlToImage }}" class="ml-4 align-self-center rounded" style="width:20vw">
   </div>
+  {% if field.pk %}
+    <button type="button" class="btn btn-outline-danger" 
+      onclick="delete_from_favorite(this, {{ field.pk }}, {{ forloop.counter }});">
+      Delete
+    </button>
+  {% else %}
+    <button type="button" class="btn btn-outline-primary" 
+      onclick="add_to_favorite(this, {
+        title:'{{ field.title }}',
+        author:'{{ field.author }}',
+        description:'{{ field.description }}',
+        url:'{{ field.url }}',
+        urlToImage:'{{ field.urlToImage }}',
+        publishedAt:'{{ field.publishedAt }}'});">
+      Add to Favorite
+    </button>
+  {% endif %}
 
   <!-- Modal -->
   <div class="modal fade" id="id{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
