@@ -49,13 +49,19 @@
       </nav>
 
       <div class="main">
-        {% if request.user.is_authenticated %} is_authenticated {% endif %}
+        {% if request.user.is_authenticated %} 
+          <div class="alert" style="background: #e9ecef;">
+            welcome <strong>{{ request.user }}</strong>
+          </div>
+        {% endif %}
         <div>
           {% block content %} {% endblock %}
         </div>
       </div>
       <!-- end of container -->
     </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

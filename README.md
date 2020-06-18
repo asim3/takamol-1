@@ -11,9 +11,7 @@ You can visit the website at [https://takamol.herokuapp.com](https://takamol.her
 - Python (3.7, 3.8)
 - Django (3.0)
 
----
-
-- [for a full setup guide see this documentation](https://docs.djangoproject.com/en/3.0/intro/install/)
+[for a full setup guide see this documentation](https://docs.djangoproject.com/en/3.0/intro/install/)
 
 ---
 
